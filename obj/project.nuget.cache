@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "lRBJT1rP3e0=",
+  "success": true,
+  "projectFilePath": "D:\\DOTNET\\BlazorApp2\\BlazorApp2\\BlazorApp2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TRUC VI\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.12\\microsoft.aspnetcore.app.internal.assets.10.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

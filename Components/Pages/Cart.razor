@@ -1,0 +1,55 @@
+@page "/cart"
+@using BlazorApp2.Models
+@inject BlazorApp2.Services.CartService CartService
+
+<h3>Your Cart</h3>
+
+@if (!CartService.Items.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Unit</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in CartService.Items)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice.ToString("C")</td>
+                    <td>@item.Total.ToString("C")</td>
+                    <td><button class="btn btn-sm btn-danger" @onclick="(()=>Remove(item.ProductId))">Remove</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-end">
+        <h5 class="me-3">Total: @CartService.Total().ToString("C")</h5>
+        <button class="btn btn-secondary me-2" @onclick="Clear">Clear</button>
+        <button class="btn btn-primary" disabled>Checkout</button>
+    </div>
+}
+
+@code {
+    void Remove(int productId)
+    {
+        CartService.Remove(productId);
+        StateHasChanged();
+    }
+
+    void Clear()
+    {
+        CartService.Clear();
+    }
+}
